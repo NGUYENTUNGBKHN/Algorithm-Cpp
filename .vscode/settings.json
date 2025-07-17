@@ -1,0 +1,108 @@
+{
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+  "doxdocgen.c.getterText": "Create a {name} object",
+  "doxdocgen.file.customTag": [
+    "@details    ",
+    "@ref        ",
+    "@copyright  Copyright (c) {year} Fangia Savy"
+  ],
+  "doxdocgen.file.fileOrder": [
+    "file",
+    "brief",
+    "date",
+    "author",
+    "custom"
+  ],
+  // The template for the file parameter in Doxygen.
+  "doxdocgen.file.fileTemplate": "@file       {name}",
+  // Set the name of the author.  Replaces {author}.
+  "doxdocgen.generic.authorName": "    [Gentantun]",
+  "doxdocgen.c.commentPrefix": " * ",
+  "doxdocgen.c.firstLine": "/**",
+  "doxdocgen.c.lastLine": "*/",
+  "doxdocgen.generic.briefTemplate": "@brief      {text}",
+  "doxdocgen.generic.dateFormat": "      YYYY/MM/DD",
+  "doxdocgen.generic.authorEmail": "nguyenthanhtung8196@gmail.com",
+  "files.associations": {
+    "*.h": "c",
+    "array": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "iterator": "cpp",
+    "initializer_list": "cpp",
+    "unordered_map": "cpp",
+    "atomic": "cpp",
+    "cctype": "cpp",
+    "clocale": "cpp",
+    "cmath": "cpp",
+    "cstdarg": "cpp",
+    "cstddef": "cpp",
+    "cstdint": "cpp",
+    "cstdio": "cpp",
+    "cstdlib": "cpp",
+    "cwchar": "cpp",
+    "cwctype": "cpp",
+    "exception": "cpp",
+    "algorithm": "cpp",
+    "functional": "cpp",
+    "memory": "cpp",
+    "memory_resource": "cpp",
+    "numeric": "cpp",
+    "random": "cpp",
+    "system_error": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp",
+    "fstream": "cpp",
+    "iosfwd": "cpp",
+    "iostream": "cpp",
+    "istream": "cpp",
+    "limits": "cpp",
+    "new": "cpp",
+    "ostream": "cpp",
+    "sstream": "cpp",
+    "stdexcept": "cpp",
+    "streambuf": "cpp",
+    "typeinfo": "cpp"
+  },
+  "git.enableSmartCommit": true,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "terminal.integrated.autoReplies": {},
+  "terminal.integrated.env.windows": {},
+  "terminal.integrated.profiles.windows": {
+    "msys": {
+      "path": [
+        "D:\\msys2\\usr\\bin\\bash.exe",
+      ],
+      "args": [
+        "--login",
+        "-i"
+      ],
+      "icon": "terminal-powershell"
+    },
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    }
+  },
+  "makefile.configureOnOpen": true,
+  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.syntaxHighlightingEnabled": false,
+  "workbench.editor.empty.hint": "hidden",
+  "editor.formatOnSave": false,
+}
