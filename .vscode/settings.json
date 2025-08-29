@@ -6,7 +6,7 @@
   "doxdocgen.file.customTag": [
     "@details    ",
     "@ref        ",
-    "@copyright  Copyright (c) {year} Fangia Savy"
+    "@copyright  Copyright (c) {year} Robotun"
   ],
   "doxdocgen.file.fileOrder": [
     "file",
