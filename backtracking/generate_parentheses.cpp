@@ -1,11 +1,14 @@
 /**
  * @file       generate_parentheses.cpp
  * @brief      
- * @date       2025/07/17
+ * @date       2026/05/01
  * @author     [Gentantun] (nguyenthanhtung8196@gmail.com)
- * @details    
+ * @details    a sequence of parentheses is well-formed if each opening parentheses
+ *              has a corresponding closing parenthesis
+ *              and the closing parentheses are correctly ordered
+ *              when input write n, it will generate impossible scenarios
  * @ref        
- * @copyright  Copyright (c) 2025 Fangia Savy
+ * @copyright  Copyright (c) 2026 Robotun
 */
 
 /*******************************************************************************
@@ -13,7 +16,6 @@
 *******************************************************************************/
 #include <iostream>
 #include <vector>
-#include <cassert>   /// for assert
 /*******************************************************************************
 **                       INTERNAL MACRO DEFINITIONS
 *******************************************************************************/
@@ -38,126 +40,110 @@
 **                          FUNCTION DEFINITIONS
 *******************************************************************************/
 
-/**
- * @brief      
- * @namespace backtracking
- * 
-*/
 namespace backtracking{
-/**
- * @brief      generate_parentheses class
- * 
-*/
+
+// generate_parentheses namespace
+namespace generate_parentheses{
+
 class generate_parentheses
 {
 private:
     /* data */
-    std::vector<std::string> res;   // 
-
-    void makeStrings(std::string str, int n, int closed, int open);
 public:
+    std::vector<std::string> genString;
     generate_parentheses(/* args */);
     ~generate_parentheses();
-
-    std::vector<std::string> generate(int n);
+    std::vector<std::string> gen(int n);
+    int solve(int open_idx, int close_idx, int n, std::string strResult);
+    void show(std::vector<std::string> str);
 };
 
-/**
- * @brief      Construct a new generate parentheses::generate parentheses object
- * 
-*/
-generate_parentheses::generate_parentheses()
+generate_parentheses::generate_parentheses(/* args */)
 {
-
 }
 
-/**
- * @brief      Destroy the generate parentheses::generate parentheses object
- * 
-*/
 generate_parentheses::~generate_parentheses()
 {
-
 }
-
-/**
- * @brief      generate_parentheses::makeStrings
- * 
- * @param str 
- * @param n 
- * @param closed 
- * @param open 
-*/
-void generate_parentheses::makeStrings(std::string str, int n, int closed, int open)
+    
+int generate_parentheses::solve(int open_idx, int close_idx, int n, std::string strResult)
 {
-    if (closed > open)
+    if (strResult.size() == n*2)
     {
-        return;
+        if (open_idx == close_idx)
+        {
+            genString.push_back(strResult);
+        }
+        return 0;
     }
 
-    if (str.length() >= 2*n)
+    if (close_idx > open_idx)
     {
-        if (closed == open)
-        {
-            res.push_back(str);
-            // std::cout << str << std::endl;
-        }
-        return;
-    } 
-    
-    makeStrings(str + ")", n, closed + 1, open);
-    makeStrings(str + "(", n, closed, open + 1);
+        return 0;
+    }
+
+    /* gen open parentheses*/
+    open_idx ++;
+    solve(open_idx, close_idx, n, strResult + '(');
+
+    /* gen close parentheses*/
+    open_idx --;
+    close_idx++;
+    solve(open_idx, close_idx, n, strResult + ')');
+
 }
 
-/**
- * @brief      generate_parentheses::generate
- * 
- * @param n 
- * @return std::vector<std::string> 
-*/
-std::vector<std::string> generate_parentheses::generate(int n)
+void generate_parentheses::show(std::vector<std::string> str)
 {
-    res.clear();
-    std::string strRes = "(";
-
-    makeStrings(strRes, n, 0, 1);
-
-    return res;
+    for (int i = 0; i < str.size(); i++)
+    {
+        std::cout << str[i] << std::endl;
+    }
 }
 
+std::vector<std::string> generate_parentheses::gen(int n)
+{
+    int index = 0;
+    int open_cnt = 0, close_cnt = 0;
+    std::string strResult;
+
+    solve(open_cnt, close_cnt, n, strResult);
+    // show(genString);
+    return genString;
 }
 
-void test()
+}    
+}
+
+
+
+int main()
 {
     int n = 0;
     std::vector<std::string> patterns;
-    backtracking::generate_parentheses p;
+    backtracking::generate_parentheses::generate_parentheses p;
 
     n = 1;
     patterns = {{"()"}};
-    assert(p.generate(n) == patterns);
+    p.gen(n) == patterns;
 
     n = 3;
     patterns = {{"()()()"}, {"()(())"}, {"(())()"}, {"(()())"}, {"((()))"}};
 
-    assert(p.generate(n) == patterns);
+    p.gen(n) == patterns;
 
     n = 4;
     patterns = {{"()()()()"}, {"()()(())"}, {"()(())()"}, {"()(()())"},
                 {"()((()))"}, {"(())()()"}, {"(())(())"}, {"(()())()"},
                 {"(()()())"}, {"(()(()))"}, {"((()))()"}, {"((())())"},
                 {"((()()))"}, {"(((())))"}};
-    assert(p.generate(n) == patterns);
+    p.gen(n) == patterns;
 
     std::cout << "All tests passed\n";
-}
 
-int main()
-{
-    test();
+    // test.gen(3);
     return 0;
 }
-
 
 
 
